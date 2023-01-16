@@ -40,8 +40,15 @@ public class ShibaManager : MonoBehaviour
         
     }
 
-    public void dogIsHappy()
+    public void ToggleNoddingHeadDog()
     {
-        //Code pour faire agir le chien, qui sera appelé par l'interaction avec le XR hand controller
+       if(_animator.GetBool("isNodding"))
+        {
+            _animator.SetBool("isNodding", false);
+        }
+        else
+        {
+            _animator.SetBool("isNodding", true);
+        }
     }
 }

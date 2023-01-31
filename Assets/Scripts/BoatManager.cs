@@ -42,11 +42,11 @@ public class BoatManager : MonoBehaviour
     void MonterDescendre()
     {
         transform.Translate(hautBas * Time.deltaTime);
-        if (transform.position.y <= -3.75f)
+        if (transform.position.y <= -3.65f)
         {
             hautBas = new Vector3(0, _floatingSpeed, 0);
         }
-        else if (transform.position.y > -3.35f)
+        else if (transform.position.y > -3.5f)
         {
             hautBas = new Vector3(0, -_floatingSpeed, 0);
         }

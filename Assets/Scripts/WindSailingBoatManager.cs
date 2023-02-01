@@ -23,7 +23,9 @@ public class WindSailingBoatManager : MonoBehaviour
     private Vector3 hautBas;
 
     private Rigidbody boatRb;
-    [SerializeField] private float windPower = 0;
+    public float windPower;
+
+    public float initialWindPower = 15000f;
 
     [SerializeField] TextMeshProUGUI speedometerText;
     private float speed;
@@ -34,6 +36,7 @@ public class WindSailingBoatManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        windPower = initialWindPower;
         boatRb = GetComponent<Rigidbody>();
         boatRb.centerOfMass = centerOfMass.transform.position;
     }

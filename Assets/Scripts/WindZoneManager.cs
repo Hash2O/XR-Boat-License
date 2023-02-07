@@ -14,12 +14,6 @@ public class WindZoneManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
@@ -27,6 +21,9 @@ public class WindZoneManager : MonoBehaviour
             print("Go with the wind !");
             WindSailingBoatManager _player = other.gameObject.GetComponent<WindSailingBoatManager>();
             _player.windPower *= windBoost;
+            _player.meteo = "Zone de grand vent, prudence";
+            _player.meteoText.SetText(_player.meteo);
+            _player.audioSource.PlayOneShot(_player.recommandations[0]);
         }
     }
 
@@ -37,6 +34,9 @@ public class WindZoneManager : MonoBehaviour
             print("Entering dead calm zone.");
             WindSailingBoatManager _player = other.gameObject.GetComponent<WindSailingBoatManager>();
             _player.windPower = _player.initialWindPower;
+            _player.meteo = "Zone de calme, restez vigilant";
+            _player.meteoText.SetText(_player.meteo);
+            _player.audioSource.PlayOneShot(_player.recommandations[1]);
         }
     }
 

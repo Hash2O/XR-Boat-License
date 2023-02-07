@@ -16,8 +16,8 @@ public class BoatManager : MonoBehaviour
     [SerializeField]
     private float _roulis;
 
-    private float horizontalInput;
-    private float verticalInput;
+    //private float horizontalInput;
+    //private float verticalInput;
 
     private Vector3 hautBas;
 
@@ -32,21 +32,23 @@ public class BoatManager : MonoBehaviour
     {
         MonterDescendre();
 
+        /*
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
         transform.Translate(Vector3.forward * Time.deltaTime * _movingSpeed * verticalInput);
         transform.Rotate(Vector3.up, _turnSpeed * horizontalInput * Time.deltaTime);
+        */
     }
 
     void MonterDescendre()
     {
         transform.Translate(hautBas * Time.deltaTime);
-        if (transform.position.y <= -3.65f)
+        if (transform.position.y <= -3.15f)
         {
             hautBas = new Vector3(0, _floatingSpeed, 0);
         }
-        else if (transform.position.y > -3.5f)
+        else if (transform.position.y > -2.9f)
         {
             hautBas = new Vector3(0, -_floatingSpeed, 0);
         }

@@ -17,6 +17,11 @@ public class WindSailingBoatManager : MonoBehaviour
     [SerializeField]
     private float _roulis;
 
+    /*
+    [SerializeField]
+    private float _flottaison;
+    */
+
     private float horizontalInput;
     private float verticalInput;
 
@@ -27,10 +32,16 @@ public class WindSailingBoatManager : MonoBehaviour
 
     public float initialWindPower = 15000f;
 
+    [SerializeField] public TextMeshProUGUI meteoText;
+    public string meteo;
+
     [SerializeField] TextMeshProUGUI speedometerText;
     private float speed;
 
     [SerializeField] GameObject centerOfMass;
+
+    [SerializeField] public AudioSource audioSource;
+    [SerializeField] public List<AudioClip> recommandations;
     
 
     // Start is called before the first frame update
@@ -39,6 +50,9 @@ public class WindSailingBoatManager : MonoBehaviour
         windPower = initialWindPower;
         boatRb = GetComponent<Rigidbody>();
         boatRb.centerOfMass = centerOfMass.transform.position;
+        //_flottaison = 0.2f;
+        meteo = "Rien à signaler";
+        meteoText.SetText(meteo);
     }
 
     private void Update()
@@ -52,23 +66,24 @@ public class WindSailingBoatManager : MonoBehaviour
     void FixedUpdate()
     {
         MonterDescendre();
-
+        
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
         //transform.Translate(Vector3.forward * Time.deltaTime * _movingSpeed * verticalInput);
         boatRb.AddRelativeForce(Vector3.forward * windPower * verticalInput);
         transform.Rotate(Vector3.up, _turnSpeed * horizontalInput * Time.deltaTime);
+        
     }
 
     void MonterDescendre()
     {
         transform.Translate(hautBas * Time.deltaTime);
-        if (transform.position.y <= -3.65f)
+        if (transform.position.y <= - 3.8f)//transform.position.y - _flottaison)
         {
             hautBas = new Vector3(0, _floatingSpeed, 0);
         }
-        else if (transform.position.y > -3.45f)
+        else if (transform.position.y > - 3.4f) //transform.position.y + _flottaison)
         {
             hautBas = new Vector3(0, -_floatingSpeed, 0);
         }

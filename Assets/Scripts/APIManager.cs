@@ -17,12 +17,21 @@ public class APIManager : MonoBehaviour
     [SerializeField] List<string> parameterNames;
     [SerializeField] List<string> parameterValues;
 
-    [SerializeField] Image image;
+    [SerializeField] Button weatherReportButton;
     [SerializeField] TextMeshProUGUI buttonText;
+    [SerializeField] TextMeshProUGUI marinaMétéoText;
+
+    public float affichageTempérature;
+    public float affichageVitesseVent;
+    public float DirectionVent;
+    string affichageDirectionVent;
+
+    [SerializeField] WindSailingBoatManager infoMeteo;
     // Start is called before the first frame update
     private void Start()
     {
         CallURL();
+        
     }
 
 
@@ -77,22 +86,100 @@ public class APIManager : MonoBehaviour
         //Changer l'affichage sur le bouton
         //buttonText.SetText("Received: " + webRequest.downloadHandler.text);
 
-        /*
-        //Changer la couleur de l'image (ne fonctionne pas)
-        image = buttonText.transform.parent.GetComponent<Image>();
-        Color couleur;
-        ColorUtility.TryParseHtmlString(webRequest.downloadHandler.text, out couleur);
-        image.color = couleur;
-        */
-
         //Traitement de données au format JSON
         //NB : Le parsing est ton ami
         //On récupère les données au format JSON et on les met au format de la classe voulue,
         ////ici APIResponse. On le stocke dans une variable
         var apiResponse = JsonUtility.FromJson<APIResponse>(webRequest.downloadHandler.text);
         Debug.Log("APIResponse, température demandée : " + apiResponse.current_weather.temperature);
-        var affichage = apiResponse.current_weather.temperature;
-        buttonText.SetText(affichage.ToString());
+        affichageTempérature = apiResponse.current_weather.temperature;
+        affichageVitesseVent = apiResponse.current_weather.windspeed;
+        DirectionVent = apiResponse.current_weather.winddirection;
+
+        //Gestion de l'affichage de la direction du vent
+        if (0 < DirectionVent && DirectionVent < 22.5f)
+        {
+            affichageDirectionVent = "Nord";
+        }
+        else if ( 22.6f < DirectionVent && DirectionVent < 45f)
+        {
+            affichageDirectionVent = "Nord Nord Est";
+        }
+        else if (45.1f < DirectionVent && DirectionVent < 67.5f)
+        {
+            affichageDirectionVent = "Nord Est";
+        }
+        else if (67.6f < DirectionVent && DirectionVent < 90f)
+        {
+            affichageDirectionVent = "Est";
+        }
+        else if (90.1f < DirectionVent && DirectionVent < 112.5f)
+        {
+            affichageDirectionVent = "Est Sud Est";
+        }
+        else if (112.6f < DirectionVent && DirectionVent < 135f)
+        {
+            affichageDirectionVent = "Sud Est";
+        }
+        else if (135.1f < DirectionVent && DirectionVent < 157.5f)
+        {
+            affichageDirectionVent = "Sud Sud Est";
+        }
+        else if (157.6f < DirectionVent && DirectionVent < 180f)
+        {
+            affichageDirectionVent = "Sud";
+        }
+        else if (180.1f < DirectionVent && DirectionVent < 202.5f)
+        {
+            affichageDirectionVent = "Sud Sud Ouest";
+        }
+        else if (202.6f < DirectionVent && DirectionVent < 225f)
+        {
+            affichageDirectionVent = "Sud Ouest";
+        }
+        else if (225.1f < DirectionVent && DirectionVent < 247.5f)
+        {
+            affichageDirectionVent = "Ouest Sud Ouest";
+        }
+        else if (247.6f < DirectionVent && DirectionVent < 270f)
+        {
+            affichageDirectionVent = "Ouest";
+        }
+        else if (270.1f < DirectionVent && DirectionVent < 292.5f)
+        {
+            affichageDirectionVent = "Nord Ouest";
+        }
+        else if (292.6f < DirectionVent && DirectionVent < 315f)
+        {
+            affichageDirectionVent = "Nord Nord Ouest";
+        }
+        else if (315.1f < DirectionVent && DirectionVent < 337.5f)
+        {
+            affichageDirectionVent = "Nord Nord Ouest";
+        }
+        else if (337.6f < DirectionVent && DirectionVent < 360f)
+        {
+            affichageDirectionVent = "Nord";
+        }
+
+        //Affichage des données dans la marina
+        marinaMétéoText.SetText("Température actuelle : " + affichageTempérature.ToString() +
+                        "°C \nVitesse du vent : " + affichageVitesseVent.ToString() +
+                        "km/h \n Direction du vent : " + affichageDirectionVent);
+
+        //Affichage sur le navire
+        infoMeteo.meteoText.SetText("Direction du vent: " + affichageDirectionVent);
+
+        //Récupération de la vitesse du vent pour générer un modificateur de vitesse du navire
+        float windPowerModifier = affichageVitesseVent / 10f;
+
+        //Affichage sur l'écran du navire du modificateur en cours
+        //infoMeteo.meteoText.SetText("Wind Power Modifier : " + windPowerModifier);
+
+        //Application du modif sur la vitesse de base.
+        //NB : chaque appel crée une nouvelle valeur qui s'ajoute à la précédente...
+        //Remédier à ca : 
+        infoMeteo.windPower = infoMeteo.windPower * windPowerModifier;
 
     }
 }

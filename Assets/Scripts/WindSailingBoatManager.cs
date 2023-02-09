@@ -17,11 +17,11 @@ public class WindSailingBoatManager : MonoBehaviour
     [SerializeField]
     private float _roulis;
 
-    /*
-    [SerializeField]
-    private float _flottaison;
-    */
 
+    [SerializeField]
+    APIManager apiManager;
+    float windSpeed;
+    
     private float horizontalInput;
     private float verticalInput;
 
@@ -50,9 +50,21 @@ public class WindSailingBoatManager : MonoBehaviour
         windPower = initialWindPower;
         boatRb = GetComponent<Rigidbody>();
         boatRb.centerOfMass = centerOfMass.transform.position;
+
         //_flottaison = 0.2f;
+
         meteo = "Rien à signaler";
         meteoText.SetText(meteo);
+
+        if(apiManager != null)
+        {
+            windSpeed = apiManager.affichageVitesseVent;
+            print("Vitesse du vent récupérée via l'API meteo : " + windSpeed);
+        }
+        else
+        {
+            print("pas de données météo disponibles");
+        }
     }
 
     private void Update()

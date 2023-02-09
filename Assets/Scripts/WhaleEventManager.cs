@@ -20,6 +20,6 @@ public class WhaleEventManager : MonoBehaviour
     void whaleEventEmission()
     {
         Instantiate(eventParticles, transform.position, transform.rotation);
-        print("Event in action");
+        //print("Event in action");
     }
 }

@@ -593,7 +593,7 @@ PrefabInstance:
     - target: {fileID: 4557224179319633669, guid: 41d073bdd645b6a4bbd08bc0d205e20b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -757.53
       objectReference: {fileID: 0}
     - target: {fileID: 4557224179319633669, guid: 41d073bdd645b6a4bbd08bc0d205e20b,
         type: 3}
@@ -603,12 +603,12 @@ PrefabInstance:
     - target: {fileID: 4557224179319633669, guid: 41d073bdd645b6a4bbd08bc0d205e20b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 77.37
       objectReference: {fileID: 0}
     - target: {fileID: 4557224179319633669, guid: 41d073bdd645b6a4bbd08bc0d205e20b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.25983614
       objectReference: {fileID: 0}
     - target: {fileID: 4557224179319633669, guid: 41d073bdd645b6a4bbd08bc0d205e20b,
         type: 3}
@@ -618,7 +618,7 @@ PrefabInstance:
     - target: {fileID: 4557224179319633669, guid: 41d073bdd645b6a4bbd08bc0d205e20b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.96565276
       objectReference: {fileID: 0}
     - target: {fileID: 4557224179319633669, guid: 41d073bdd645b6a4bbd08bc0d205e20b,
         type: 3}
@@ -633,7 +633,7 @@ PrefabInstance:
     - target: {fileID: 4557224179319633669, guid: 41d073bdd645b6a4bbd08bc0d205e20b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 149.879
       objectReference: {fileID: 0}
     - target: {fileID: 4557224179319633669, guid: 41d073bdd645b6a4bbd08bc0d205e20b,
         type: 3}
@@ -1345,7 +1345,7 @@ PrefabInstance:
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -3775,6 +3775,7 @@ MonoBehaviour:
   affichageVitesseVent: 0
   DirectionVent: 0
   infoMeteo: {fileID: 1336305981}
+  cubeTest: {fileID: 0}
 --- !u!1001 &904935895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5774,7 +5775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1479120368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8342,6 +8343,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429623910494352451, guid: 00d278d8746b4d84cb9342768b171dc2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 13.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429623910494352451, guid: 00d278d8746b4d84cb9342768b171dc2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.2
       objectReference: {fileID: 0}
     - target: {fileID: 5612244433051834638, guid: 00d278d8746b4d84cb9342768b171dc2,
         type: 3}

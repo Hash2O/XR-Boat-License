@@ -27,6 +27,8 @@ public class APIManager : MonoBehaviour
     string affichageDirectionVent;
 
     [SerializeField] WindSailingBoatManager infoMeteo;
+
+    [SerializeField] GameObject cubeTest;
     // Start is called before the first frame update
     private void Start()
     {
@@ -171,15 +173,22 @@ public class APIManager : MonoBehaviour
         infoMeteo.meteoText.SetText("Direction du vent: " + affichageDirectionVent);
 
         //Récupération de la vitesse du vent pour générer un modificateur de vitesse du navire
-        float windPowerModifier = affichageVitesseVent / 10f;
+        float windPowerModifier = affichageVitesseVent / 20f; //Créer une variable sérialisée pour gérer le bonus désiré
 
         //Affichage sur l'écran du navire du modificateur en cours
-        //infoMeteo.meteoText.SetText("Wind Power Modifier : " + windPowerModifier);
+        infoMeteo.meteoText.SetText("Wind Power Modifier : " + windPowerModifier);
 
         //Application du modif sur la vitesse de base.
         //NB : chaque appel crée une nouvelle valeur qui s'ajoute à la précédente...
         //Remédier à ca : 
         infoMeteo.windPower = infoMeteo.windPower * windPowerModifier;
 
+        //Cube qui fait face à la direction d'arrivée du vent
+        cubeTest.transform.Rotate(0, DirectionVent, 0);
+
+        //Application d'un AddForce sur le cube pour le pousser dans le sens du vent
+        Rigidbody cubeRb = cubeTest.GetComponent<Rigidbody>();
+
+        //Reste à trouver la bonne formule pour appliquer cette force dans la bonne direction
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RotateWhenSelectedScript : MonoBehaviour
 {
+    public bool isSelected = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,11 @@ public class RotateWhenSelectedScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.Rotate(Vector3.up, 5f * Time.deltaTime);
+        if(isSelected == true)
+        {
+            StartCoroutine("OnRotate", 2f);
+        }
+        
     }
 
     public void OnTriggerEnter(Collider other)
@@ -29,6 +34,11 @@ public class RotateWhenSelectedScript : MonoBehaviour
     public void OnTriggerExit(Collider other)
     {
         print("Trigger exited");
+    }
+
+    public void OnRotate()
+    {
+        transform.Rotate(Vector3.up, 5f * Time.deltaTime);
     }
 
 }

@@ -33,54 +33,21 @@ public class SharkManager : MonoBehaviour
 
     void Update()
     {
-        _distancePlayer = Vector3.Distance(_player.transform.position, transform.position);
-
-        if (_distancePlayer < _distanceMax)
         {
-
-            MoveToObject(_player.transform.position); // je vais vers le player
-
-            //_animator.SetBool("SpeedDown", false); // je joue l'anim rapiement
-            _vitesse = _vitesseRapide; // vitesse rapide
-
-            // l'ennemy attack**************
-            if (_distancePlayer < _distancePlay)
-            {
-                _animator.SetBool("Turn Around", true);
-            }
-            else
-            {
-                _animator.SetBool("Turn Around", false);
-            }
-            //******************
-
-        }
-        else
-        {
-
-            //_animator.SetBool("SpeedDown", true); // anim tranquille
-            _vitesse = _vitesseTranquille; // vitesse tranquillou
 
             float _distancePoint = Vector3.Distance(_newPosition, transform.position);
             if (_distancePoint < 1f)
             {
                 _newPosition = CreatePoint();
-
-                // while(_newPosition.x>25f || _newPosition.x<-25f || _newPosition.z<-25f || _newPosition.z>25f){
-                //     _newPosition = CreatePoint();
-                // }
             }
-
             MoveToObject(_newPosition); // 
         }
     }
 
     Vector3 CreatePoint()
     {
-
         Vector3 _pointPosition = new Vector3(Random.Range(-_distanceMaxPoint, _distanceMaxPoint) + gameObject.transform.position.x, gameObject.transform.position.y, Random.Range(-_distanceMaxPoint, _distanceMaxPoint) + gameObject.transform.position.z);
         return _pointPosition;
-
     }
 
 
@@ -94,6 +61,7 @@ public class SharkManager : MonoBehaviour
 
     }
 
+    /*
     void OnCollisionStay(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -119,4 +87,5 @@ public class SharkManager : MonoBehaviour
 
 
     }
+    */
 }

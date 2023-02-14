@@ -5,9 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Start Level.unity
+    guid: 87a5ebe9389d23b4ab101af60698799c
+  - enabled: 1
+    path: Assets/Scenes/Level 1 - Sailing Navigation.unity
+    guid: 378b189ca8f1ab549a70f6486cbb15ba
+  - enabled: 1
+    path: Assets/Scenes/Level 2 - Go with the wind.unity
+    guid: 104b1a926a092cf4ebbb1a77c1feecc7
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b1a92ea99ea66e748a2be4c1009600ba,
       type: 2}

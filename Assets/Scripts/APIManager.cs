@@ -105,15 +105,15 @@ public class APIManager : MonoBehaviour
         }
         else if ( 22.6f < DirectionVent && DirectionVent < 45f)
         {
-            affichageDirectionVent = "Nord Nord Est";
+            affichageDirectionVent = "Nord Nord Est - Alizé";
         }
         else if (45.1f < DirectionVent && DirectionVent < 67.5f)
         {
-            affichageDirectionVent = "Nord Est";
+            affichageDirectionVent = "Nord Est - Alizé";
         }
         else if (67.6f < DirectionVent && DirectionVent < 90f)
         {
-            affichageDirectionVent = "Est";
+            affichageDirectionVent = "Est - Alizé";
         }
         else if (90.1f < DirectionVent && DirectionVent < 112.5f)
         {

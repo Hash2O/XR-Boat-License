@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class APIManager : MonoBehaviour
 {
-    [SerializeField] string requestURL;
+    //[SerializeField] 
+    string requestURL;
     string queryString;
     //Parametres pour URL
     //[SerializeField] string parameterName;
@@ -28,16 +29,16 @@ public class APIManager : MonoBehaviour
 
     [SerializeField] WindSailingBoatManager infoMeteo;
 
-    [SerializeField] GameObject cubeTest;
     // Start is called before the first frame update
     private void Start()
     {
-        CallURL();
+        //Par défaut, la météo sera celle de La Rochelle, sauf choix différent dans le jeu
+        //CallURL("https://api.open-meteo.com/v1/forecast?latitude=46.16&longitude=-1.15&current_weather=true");
         
     }
 
 
-    public void CallURL()
+    public void CallURL(string requestURL)
     {
         //StartCoroutine(GetRequest(requestURL);
 
@@ -183,12 +184,5 @@ public class APIManager : MonoBehaviour
         //Remédier à ca : 
         infoMeteo.windPower = infoMeteo.windPower * windPowerModifier;
 
-        //Cube qui fait face à la direction d'arrivée du vent
-        cubeTest.transform.Rotate(0, DirectionVent, 0);
-
-        //Application d'un AddForce sur le cube pour le pousser dans le sens du vent
-        Rigidbody cubeRb = cubeTest.GetComponent<Rigidbody>();
-
-        //Reste à trouver la bonne formule pour appliquer cette force dans la bonne direction
     }
 }

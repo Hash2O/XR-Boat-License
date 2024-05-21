@@ -4639,7 +4639,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 876312213, guid: be2c5057de33dc04498684e1838873cc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be2c5057de33dc04498684e1838873cc, type: 3}
 --- !u!1 &876312212 stripped
 GameObject:
@@ -4762,7 +4763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff15fa5d912928541bdf844910d64990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agent: {fileID: 0}
   speed: 5
   _destinations:
   - {x: -319, y: -1, z: -95}
@@ -4834,7 +4834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084941512c5985a48a075d25c1321994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requestURL: https://api.open-meteo.com/v1/forecast?latitude=16.25&longitude=-61.58&current_weather=true
   parameterNames:
   - longitude
   - latitude
@@ -4850,7 +4849,6 @@ MonoBehaviour:
   affichageVitesseVent: 0
   DirectionVent: 0
   infoMeteo: {fileID: 1336305981}
-  cubeTest: {fileID: 0}
 --- !u!114 &901114848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5392,7 +5390,6 @@ GameObject:
   m_Component:
   - component: {fileID: 991831815}
   - component: {fileID: 991831816}
-  - component: {fileID: 991831817}
   - component: {fileID: 991831818}
   m_Layer: 0
   m_Name: Beach
@@ -5456,19 +5453,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 100
   m_Center: {x: -50, y: 0, z: -10}
---- !u!114 &991831817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991831814}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7640c97156841b4aa736503bcee8663, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  windBoost: 0.75
 --- !u!114 &991831818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11066,6 +11050,11 @@ PrefabInstance:
       propertyPath: m_RequestedTrackingOriginMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 702192054344272596, guid: 871899834bb6195488135c186d581452,
+        type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 715171354263425486, guid: 871899834bb6195488135c186d581452,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -11595,6 +11584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5561611833198071071, guid: 86047842684d44645b9ce3c8518ba5c9, type: 3}
+    - {fileID: 7822001801595774894, guid: 86047842684d44645b9ce3c8518ba5c9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 86047842684d44645b9ce3c8518ba5c9, type: 3}
 --- !u!198 &7822001802469566132 stripped
 ParticleSystem:
@@ -11725,5 +11715,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 424960534}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8738676219173554230, guid: 4556c3a2f82fc4a44ac5db5434e1240f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4556c3a2f82fc4a44ac5db5434e1240f, type: 3}

@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class FisherBoatManager2 : MonoBehaviour
 {
-    [SerializeField] GameObject _agent;
     [SerializeField] float speed = 5f;
     [SerializeField] private List<Vector3> _destinations = new List<Vector3>();
 
     private void Update()
     {
-        MoveAgent(_agent);
+        MoveAgent();
     }
 
 
-    private void MoveAgent(GameObject agent)
+    private void MoveAgent()
     {
         // we move the agent to the destination using the pool
         if (_destinations.Count > 0)
